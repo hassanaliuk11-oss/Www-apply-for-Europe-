@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global University Admissions & Scholarships | Eng Hassan Jatoi</title>
+<meta name="description" content="Country-wise official university admissions, college directories, and scholarship resources. Developed by Eng Hassan Jatoi.">
+<style>
+:root{--navy:#102b4e;--blue:#1267c5;--pale:#eef5fc;--line:#d9e4f0;--text:#17263a;--muted:#64748b;--green:#079455}
+*{box-sizing:border-box}body{margin:0;background:#f2f6fb;color:var(--text);font-family:Arial,Helvetica,sans-serif}
+header{background:linear-gradient(115deg,#0b2342,#124c87);color:white;padding:28px 18px}
+.head{max-width:1250px;margin:auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}.logo{font-size:42px}
+h1{font-size:clamp(24px,4vw,36px);margin:0 0 8px}header p{margin:0;color:#d9eaff;line-height:1.5}
+.contact{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+a.btn{display:inline-block;text-decoration:none;font-weight:bold;padding:12px 15px;border-radius:9px;color:white;background:var(--green)}
+a.btn.secondary{background:#fff;color:var(--navy)}
+main{max-width:1250px;margin:22px auto;padding:0 16px}
+.hero{background:white;border:1px solid var(--line);padding:22px;border-radius:16px;margin-bottom:18px}
+.hero h2{margin:0 0 8px}.hero p{color:var(--muted);line-height:1.6;margin:0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.stat{background:var(--pale);padding:14px;border-radius:10px}.stat b{font-size:23px;display:block;color:var(--blue)}.stat span{font-size:13px;color:var(--muted)}
+.tools{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin:18px 0}
+input,select{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:9px;background:white;font-size:15px;color:var(--text)}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:20px 0 12px}
+.section-title h2{font-size:22px;margin:0}
+#count{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:white;border:1px solid var(--line);border-radius:13px;padding:17px;box-shadow:0 3px 12px #102b4e0a}
+.country{font-size:19px;font-weight:700;margin-bottom:10px}.kind{display:inline-block;background:#eaf3ff;color:#175ca8;border-radius:20px;padding:5px 9px;font-size:11px;margin-bottom:8px}
+.card p{font-size:13px;color:var(--muted);line-height:1.5;margin:4px 0 10px}
+.link{display:block;text-decoration:none;color:#075cb3;padding:10px 0;border-top:1px solid #edf1f6;overflow-wrap:anywhere}
+.link:hover{text-decoration:underline}.link small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.notice{margin-top:20px;background:#fff8e6;border:1px solid #f2d58c;padding:15px;border-radius:12px;font-size:13px;line-height:1.6}
+footer{background:var(--navy);color:white;text-align:center;padding:24px 14px;margin-top:28px;line-height:1.8}footer a{color:#9dd4ff}
+@media(max-width:700px){.tools{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.contact{margin-left:0}.head{align-items:flex-start}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head">
+    <div class="logo">🎓🌍</div>
+    <div>
+      <h1>Global University Admissions & Scholarships</h1>
+      <p>Official university portals · College admissions · Scholarships · Undergraduate · Master's · PhD</p>
+    </div>
+    <div class="contact">
+      <a class="btn" href="https://wa.me/923083500829" target="_blank" rel="noopener">WhatsApp 03083500829 ↗</a>
+      <a class="btn secondary" href="#directory">Explore portals ↓</a>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h2>Find Universities, College Admissions & Scholarships</h2>
+    <p>Search education resources by country, scholarship name or admissions category. Links below prioritize official government, university or recognized education portals. Some portals provide guidance or discovery rather than a direct application form.</p>
+    <div class="stats">
+      <div class="stat"><b id="totalCountries">—</b><span>Countries / global resources listed</span></div>
+      <div class="stat"><b id="totalLinks">—</b><span>Education links in this directory</span></div>
+      <div class="stat"><b>24/7</b><span>Browse links any time</span></div>
+    </div>
+  </section>
+
+  <section id="directory">
+    <div class="tools">
+      <input id="search" type="search" placeholder="Search country, university, college or scholarship…" aria-label="Search education links">
+      <select id="category" aria-label="Filter by category">
+        <option value="All">All categories</option>
+        <option>University directory</option><option>Admissions portal</option>
+        <option>Scholarships</option><option>Study information</option>
+        <option>Course / provider verification</option><option>Financial aid</option>
+      </select>
+      <select id="region" aria-label="Filter by region">
+        <option value="All">All regions</option>
+        <option>Global</option><option>Asia</option><option>Europe</option>
+        <option>Middle East</option><option>North America</option>
+        <option>Oceania</option><option>Africa</option><option>South America</option>
+      </select>
+    </div>
+    <div class="section-title"><h2>🌐 Education Portal Directory</h2><span id="count"></span></div>
+    <div class="grid" id="results"></div>
+  </section>
+
+  <div class="notice"><b>Important:</b> No single website contains every college and university application in every country. Always confirm the current deadline, tuition, eligibility, required documents, scholarship coverage and application fee on the institution's official website. Never pay an unofficial agent for a guaranteed scholarship or admission.</div>
+</main>
+<footer>
+  <b>Global University Admissions & Scholarships</b><br>
+  Developed by <b>Eng Hassan Jatoi</b><br>
+  Direct WhatsApp: <a href="https://wa.me/923083500829" target="_blank" rel="noopener">03083500829 — Chat on WhatsApp</a><br>
+  <small>Independent education-resource directory. Listing a portal does not imply endorsement.</small>
+</footer>
+<script>
+const portals = [
+{flag:"🇵🇰",country:"Pakistan",region:"Asia",items:[
+["University directory","HEC Recognized Universities","https://www.hec.gov.pk/english/universities/Pages/recognised.aspx","Verify recognized institutions"],
+["Scholarships","HEC Scholarships & Grants","https://www.hec.gov.pk/english/scholarshipsgrants/Pages/default.aspx","Government scholarship announcements"],
+["Admissions portal","National University of Sciences & Technology (NUST)","https://nust.edu.pk/","Admissions and programmes"],
+["Admissions portal","Virtual University of Pakistan","https://www.vu.edu.pk/","Admissions and online study"]]},
+{flag:"🇺🇸",country:"United States",region:"North America",items:[
+["Study information","EducationUSA","https://educationusa.state.gov/","Official US study guidance"],
+["Financial aid","Federal Student Aid","https://studentaid.gov/","US federal student aid; eligibility rules apply"],
+["University directory","College Navigator","https://nces.ed.gov/collegenavigator/","US college search tool"],
+["Scholarships","Fulbright Program","https://fulbrightprogram.org/","Exchange and scholarship opportunities"]]},
+{flag:"🇬🇧",country:"United Kingdom",region:"Europe",items:[
+["Admissions portal","UCAS Undergraduate Applications","https://www.ucas.com/","Undergraduate course search and applications"],
+["Scholarships","Chevening Scholarships","https://www.chevening.org/","UK master's scholarships"],
+["University directory","Universities UK","https://www.universitiesuk.ac.uk/","UK higher education sector"],
+["Study information","Study UK / British Council","https://study-uk.britishcouncil.org/","Study and funding guidance"]]},
+{flag:"🇨🇦",country:"Canada",region:"North America",items:[
+["Study information","EduCanada","https://www.educanada.ca/","Official international study resource"],
+["University directory","Universities Canada","https://univcan.ca/","Canadian universities"],
+["Scholarships","Vanier Canada Graduate Scholarships information","https://vanier.gc.ca/","Check current programme status and eligibility"]]},
+{flag:"🇦🇺",country:"Australia",region:"Oceania",items:[
+["Study information","Study Australia","https://www.studyaustralia.gov.au/","Official international study resource"],
+["Course / provider verification","CRICOS Register","https://cricos.education.gov.au/","Verify registered courses and providers"],
+["Scholarships","Australia Awards","https://www.dfat.gov.au/people-to-people/australia-awards","Government scholarship information"]]},
+{flag:"🇳🇿",country:"New Zealand",region:"Oceania",items:[
+["Study information","Study with New Zealand","https://www.studywithnewzealand.govt.nz/","Study and institution search"],
+["University directory","Universities New Zealand","https://www.universitiesnz.ac.nz/","University sector information"],
+["Scholarships","New Zealand Scholarships","https://www.nzscholarships.govt.nz/","Check eligible countries and programmes"]]},
+{flag:"🇩🇪",country:"Germany",region:"Europe",items:[
+["Study information","Study in Germany","https://www.study-in-germany.de/en/","Study and programme guidance"],
+["Scholarships","DAAD Scholarship Database","https://www.daad.de/en/study-and-research-in-germany/scholarships/","Search funding options"],
+["University directory","DAAD International Programmes","https://www.daad.de/en/studying-in-germany/universities/all-degree-programmes/","Search degree programmes"]]},
+{flag:"🇫🇷",country:"France",region:"Europe",items:[
+["Study information","Campus France","https://www.campusfrance.org/en","Study in France guidance"],
+["Admissions portal","Études en France","https://pastel.diplomatie.gouv.fr/etudesenfrance/","Application procedure for participating countries"],
+["Scholarships","Campus France funding directory","https://campusbourses.campusfrance.org/","Search scholarships"]]},
+{flag:"🇮🇹",country:"Italy",region:"Europe",items:[
+["Admissions portal","Universitaly","https://www.universitaly.it/","University and course information"],
+["Study information","Study in Italy — Ministry of Foreign Affairs","https://studyinitaly.esteri.it/","Study and scholarship information"]]},
+{flag:"🇳🇱",country:"Netherlands",region:"Europe",items:[
+["Study information","Study in NL","https://www.studyinnl.org/","Programmes and institutions"],
+["University directory","Study in NL — Institutions","https://www.studyinnl.org/dutch-education","Dutch education system"]]},
+{flag:"🇸🇪",country:"Sweden",region:"Europe",items:[
+["Admissions portal","University Admissions Sweden","https://www.universityadmissions.se/","Apply to Swedish universities"],
+["Scholarships","Swedish Institute Scholarships","https://si.se/en/apply/scholarships/","Scholarship calls and eligibility"]]},
+{flag:"🇫🇮",country:"Finland",region:"Europe",items:[
+["Admissions portal","Studyinfo","https://studyinfo.fi/","Programmes and applications"],
+["Study information","Study in Finland","https://www.studyinfinland.fi/","Official study guidance"]]},
+{flag:"🇳🇴",country:"Norway",region:"Europe",items:[
+["Study information","Study in Norway","https://studyinnorway.no/","Programmes and institutions"],
+["University directory","Universities Norway","https://www.uhr.no/english/","Higher education sector"]]},
+{flag:"🇩🇰",country:"Denmark",region:"Europe",items:[
+["Study information","Study in Denmark","https://studyindenmark.dk/","Programmes and study guidance"],
+["Admissions portal","Optagelse.dk","https://www.optagelse.dk/","Danish admissions system; applicability varies"]]},
+{flag:"🇨🇭",country:"Switzerland",region:"Europe",items:[
+["University directory","Swissuniversities","https://www.swissuniversities.ch/en/","Swiss higher education institutions"],
+["Study information","Study in Switzerland","https://www.studyinswitzerland.plus/","Study guidance"]]},
+{flag:"🇮🇪",country:"Ireland",region:"Europe",items:[
+["Study information","Education in Ireland","https://www.educationinireland.com/","International study information"],
+["Admissions portal","CAO","https://www.cao.ie/","Central undergraduate applications for participating institutions"]]},
+{flag:"🇵🇱",country:"Poland",region:"Europe",items:[
+["Study information","Study in Poland","https://study.gov.pl/","Programmes and institutions"],
+["University directory","Perspektywy Education Foundation","https://perspektywy.pl/","Higher education information"]]},
+{flag:"🇭🇺",country:"Hungary",region:"Europe",items:[
+["Study information","Study in Hungary","https://studyinhungary.hu/","Study resources"],
+["Scholarships","Stipendium Hungaricum","https://stipendiumhungaricum.hu/","Government scholarship programme"]]},
+{flag:"🇱🇻",country:"Latvia",region:"Europe",items:[
+["Study information","Study in Latvia","https://studyinlatvia.eu/","Study guidance"],
+["University directory","Study in Latvia — Institutions","https://studyinlatvia.eu/study-in-latvia/","Find institutions and programmes"]]},
+{flag:"🇱🇹",country:"Lithuania",region:"Europe",items:[
+["Study information","Study in Lithuania","https://studyin.lt/","Programmes and institutions"],
+["Scholarships","Lithuanian State Scholarships","https://studyin.lt/scholarships/","Check current calls"]]},
+{flag:"🇪🇪",country:"Estonia",region:"Europe",items:[
+["Study information","Study in Estonia","https://studyinestonia.ee/","Study programmes and universities"],
+["Admissions portal","DreamApply Estonia","https://estonia.dreamapply.com/","Application platform used by participating institutions"]]},
+{flag:"🇨🇿",country:"Czechia",region:"Europe",items:[
+["Study information","Study in Czechia","https://www.studyin.cz/","Programmes and institutions"],
+["Scholarships","Czech Government Scholarships","https://www.mzv.cz/jnp/en/information_for_aliens/study_in_the_czech_republic/","Official study information"]]},
+{flag:"🇷🇴",country:"Romania",region:"Europe",items:[
+["Study information","Study in Romania","https://studyinromania.gov.ro/","Study portal"],
+["Scholarships","Romanian Government Scholarships","https://scholarships.studyinromania.gov.ro/","Scholarship applications when open"]]},
+{flag:"🇬🇷",country:"Greece",region:"Europe",items:[
+["Study information","Study in Greece","https://studyingreece.edu.gr/","Programmes and institutions"],
+["University directory","Hellenic Authority for Higher Education","https://www.ethaae.gr/en/","Higher education quality and institutions"]]},
+{flag:"🇪🇸",country:"Spain",region:"Europe",items:[
+["Study information","SEPIE — Study in Spain","https://sepie.es/","International education resources"],
+["University directory","Spanish University System","https://www.universidades.gob.es/","Official higher education information"]]},
+{flag:"🇵🇹",country:"Portugal",region:"Europe",items:[
+["Admissions portal","DGES Higher Education Access","https://www.dges.gov.pt/en","Higher education access and institutions"],
+["Study information","Study & Research in Portugal","https://www.study-research.pt/","Study information"]]},
+{flag:"🇹🇷",country:"Türkiye",region:"Asia",items:[
+["Scholarships","Türkiye Scholarships","https://www.turkiyeburslari.gov.tr/","Government scholarship applications"],
+["Study information","Study in Türkiye","https://www.studyinturkiye.gov.tr/","Programmes and institutions"]]},
+{flag:"🇷🇺",country:"Russia",region:"Europe",items:[
+["Study information","Study in Russia","https://studyinrussia.ru/","Universities and programmes"],
+["Scholarships","Russian Government Quota","https://education-in-russia.com/","Check official current application calls"]]},
+{flag:"🇨🇳",country:"China",region:"Asia",items:[
+["Scholarships","China Scholarship Council / Campus China","https://www.campuschina.org/","Chinese Government Scholarship information"],
+["Study information","Study in China","https://www.studyinchina.edu.cn/","Study resources; confirm official institutional links"]]},
+{flag:"🇯🇵",country:"Japan",region:"Asia",items:[
+["Study information","Study in Japan","https://www.studyinjapan.go.jp/en/","Official study guidance"],
+["Scholarships","MEXT Scholarships","https://www.studyinjapan.go.jp/en/planning/scholarship/","Government scholarship information"]]},
+{flag:"🇰🇷",country:"South Korea",region:"Asia",items:[
+["Study information","Study in Korea","https://www.studyinkorea.go.kr/","Programmes and universities"],
+["Scholarships","Global Korea Scholarship","https://www.studyinkorea.go.kr/","Check GKS notices and current deadlines"]]},
+{flag:"🇸🇬",country:"Singapore",region:"Asia",items:[
+["University directory","National University of Singapore","https://www.nus.edu.sg/","Admissions and scholarships"],
+["University directory","Nanyang Technological University","https://www.ntu.edu.sg/","Admissions and financial aid"],
+["Study information","Ministry of Education Singapore","https://www.moe.gov.sg/","Education policy and resources"]]},
+{flag:"🇲🇾",country:"Malaysia",region:"Asia",items:[
+["Study information","Education Malaysia Global Services","https://educationmalaysia.gov.my/","International student information"],
+["Scholarships","Malaysia International Scholarship","https://biasiswa.mohe.gov.my/INTER/","Check current scholarship availability"]]},
+{flag:"🇮🇳",country:"India",region:"Asia",items:[
+["Admissions portal","Study in India","https://studyinindia.gov.in/","International student admissions"],
+["University directory","University Grants Commission India","https://www.ugc.gov.in/","Recognized universities and notices"]]},
+{flag:"🇧🇩",country:"Bangladesh",region:"Asia",items:[
+["University directory","University Grants Commission Bangladesh","https://ugc.gov.bd/","Recognized institutions"],
+["Admissions portal","Bangladesh National University","https://www.nu.ac.bd/","Admissions and notices"]]},
+{flag:"🇱🇰",country:"Sri Lanka",region:"Asia",items:[
+["University directory","University Grants Commission Sri Lanka","https://www.ugc.ac.lk/","University admissions and recognized institutions"],
+["Admissions portal","University Grants Commission Admissions","https://admission.ugc.ac.lk/","Undergraduate admissions information"]]},
+{flag:"🇳🇵",country:"Nepal",region:"Asia",items:[
+["University directory","University Grants Commission Nepal","https://ugcnepal.edu.np/","Recognized institutions"],
+["Admissions portal","Tribhuvan University","https://tu.edu.np/","University programmes and notices"]]},
+{flag:"🇵🇭",country:"Philippines",region:"Asia",items:[
+["University directory","Commission on Higher Education","https://ched.gov.ph/","Recognized higher education institutions"],
+["Scholarships","CHED Scholarships","https://ched.gov.ph/","Official scholarship announcements"]]},
+{flag:"🇮🇩",country:"Indonesia",region:"Asia",items:[
+["Scholarships","KNB Scholarship","https://knb.kemdiktisaintek.go.id/","Indonesian government scholarship"],
+["Study information","Indonesian Ministry of Higher Education","https://kemdiktisaintek.go.id/","Higher education information"]]},
+{flag:"🇹🇭",country:"Thailand",region:"Asia",items:[
+["University directory","Ministry of Higher Education Thailand","https://www.mhesi.go.th/","Higher education information"],
+["Study information","Study in Thailand","https://www.studyinthailand.org/","Study resource; verify institution directly"]]},
+{flag:"🇻🇳",country:"Vietnam",region:"Asia",items:[
+["University directory","Vietnam Ministry of Education and Training","https://moet.gov.vn/","Official education information"],
+["Study information","Vietnam National University Hanoi","https://vnu.edu.vn/","University admissions and programmes"]]},
+{flag:"🇸🇦",country:"Saudi Arabia",region:"Middle East",items:[
+["Admissions portal","Study in Saudi","https://studyinsaudi.moe.gov.sa/","International student admissions and scholarship opportunities"],
+["University directory","Saudi Ministry of Education","https://www.moe.gov.sa/","Education information"]]},
+{flag:"🇦🇪",country:"United Arab Emirates",region:"Middle East",items:[
+["University directory","UAE Ministry of Education","https://www.moe.gov.ae/","Accreditation and education information"],
+["Admissions portal","Khalifa University","https://www.ku.ac.ae/","Admissions and scholarships"],
+["Admissions portal","United Arab Emirates University","https://www.uaeu.ac.ae/","Programmes and admissions"]]},
+{flag:"🇶🇦",country:"Qatar",region:"Middle East",items:[
+["Admissions portal","Qatar University","https://www.qu.edu.qa/","Admissions and scholarships"],
+["Admissions portal","Hamad Bin Khalifa University","https://www.hbku.edu.qa/","Graduate programmes and funding"]]},
+{flag:"🇪🇬",country:"Egypt",region:"Africa",items:[
+["Admissions portal","Study in Egypt","https://study-in-egypt.gov.eg/","International student admissions"],
+["University directory","Supreme Council of Universities","https://scu.eg/","University information"]]},
+{flag:"🇿🇦",country:"South Africa",region:"Africa",items:[
+["University directory","Universities South Africa","https://www.usaf.ac.za/","University sector and admissions links"],
+["Financial aid","National Student Financial Aid Scheme","https://www.nsfas.org.za/","Financial aid for eligible students"]]},
+{flag:"🇲🇦",country:"Morocco",region:"Africa",items:[
+["University directory","Ministry of Higher Education Morocco","https://www.enssup.gov.ma/","Higher education information"],
+["Scholarships","Moroccan Agency for International Cooperation","https://www.amci.ma/","International cooperation and scholarship information"]]},
+{flag:"🇧🇷",country:"Brazil",region:"South America",items:[
+["Admissions portal","SISU — Ministry of Education","https://acessounico.mec.gov.br/sisu","Brazilian public university selection; eligibility varies"],
+["Scholarships","CAPES","https://www.gov.br/capes/pt-br","Graduate education and scholarship information"]]},
+{flag:"🇲🇽",country:"Mexico",region:"North America",items:[
+["Scholarships","AMEXCID","https://www.gob.mx/amexcid","Government scholarship announcements"],
+["University directory","ANUIES","https://www.anuies.mx/","Higher education institutions"]]},
+{flag:"🇪🇺",country:"European Union / Global",region:"Global",items:[
+["Scholarships","Erasmus Mundus Joint Masters","https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters","Joint master's programmes with scholarship options"],
+["University directory","European Tertiary Education Register","https://eter-project.com/","Higher education institution data"],
+["Study information","European Education Area","https://education.ec.europa.eu/","European education information"]]},
+{flag:"🌍",country:"International Scholarships",region:"Global",items:[
+["Scholarships","Islamic Development Bank Scholarships","https://www.isdb.org/scholarships","Eligibility depends on programme and country"],
+["Scholarships","World Bank Scholarships","https://www.worldbank.org/en/programs/scholarships","Participating programmes and eligibility"],
+["Scholarships","Commonwealth Scholarships","https://cscuk.fcdo.gov.uk/","Eligible Commonwealth country programmes"],
+["Scholarships","Rotary Scholarships","https://www.rotary.org/en/our-programs/scholarships","Peace fellowships and other programmes"]]}
+];
+const extraCountries = [
+["🇦🇷","Argentina","South America","https://www.argentina.gob.ar/educacion","Ministry of Education"],
+["🇨🇱","Chile","South America","https://www.mineduc.cl/","Ministry of Education"],
+["🇨🇴","Colombia","South America","https://www.mineducacion.gov.co/","Ministry of Education"],
+["🇵🇪","Peru","South America","https://www.gob.pe/minedu","Ministry of Education"],
+["🇨🇷","Costa Rica","North America","https://www.mep.go.cr/","Ministry of Public Education"],
+["🇯🇲","Jamaica","North America","https://moey.gov.jm/","Ministry of Education"],
+["🇹🇹","Trinidad and Tobago","North America","https://www.moe.gov.tt/","Ministry of Education"],
+["🇰🇪","Kenya","Africa","https://www.education.go.ke/","Ministry of Education"],
+["🇳🇬","Nigeria","Africa","https://education.gov.ng/","Federal Ministry of Education"],
+["🇬🇭","Ghana","Africa","https://moe.gov.gh/","Ministry of Education"],
+["🇺🇬","Uganda","Africa","https://www.education.go.ug/","Ministry of Education"],
+["🇹🇿","Tanzania","Africa","https://www.moe.go.tz/","Education ministry"],
+["🇷🇼","Rwanda","Africa","https://www.mineduc.gov.rw/","Ministry of Education"],
+["🇪🇹","Ethiopia","Africa","https://moe.gov.et/","Ministry of Education"],
+["🇿🇼","Zimbabwe","Africa","https://www.mopse.co.zw/","Ministry of education"],
+["🇲🇺","Mauritius","Africa","https://education.govmu.org/","Ministry of Education"],
+["🇰🇿","Kazakhstan","Asia","https://www.gov.kz/memleket/entities/edu?lang=en","Education ministry"],
+["🇺🇿","Uzbekistan","Asia","https://edu.uz/","Education ministry"],
+["🇦🇿","Azerbaijan","Asia","https://studyinazerbaijan.edu.az/","Study portal"],
+["🇬🇪","Georgia","Asia","https://mes.gov.ge/","Education ministry"],
+["🇦🇲","Armenia","Asia","https://escs.am/en","Education ministry"],
+["🇲🇳","Mongolia","Asia","https://en.meds.gov.mn/","Education ministry"],
+["🇧🇹","Bhutan","Asia","https://www.education.gov.bt/","Education ministry"],
+["🇲🇻","Maldives","Asia","https://moe.gov.mv/","Education ministry"],
+["🇰🇭","Cambodia","Asia","https://moeys.gov.kh/","Education ministry"],
+["🇱🇦","Laos","Asia","https://moes.edu.la/","Education ministry"],
+["🇲🇲","Myanmar","Asia","https://www.moe.gov.mm/","Education ministry"],
+["🇧🇳","Brunei","Asia","https://www.moe.gov.bn/","Education ministry"],
+["🇮🇱","Israel","Middle East","https://che.org.il/en/","Council for Higher Education"],
+["🇯🇴","Jordan","Middle East","https://www.mohe.gov.jo/","Ministry of Higher Education"],
+["🇰🇼","Kuwait","Middle East","https://www.mohe.edu.kw/","Ministry of Higher Education"],
+["🇧🇭","Bahrain","Middle East","https://www.moe.gov.bh/","Ministry of Education"],
+["🇴🇲","Oman","Middle East","https://www.moheri.gov.om/","Higher education ministry"],
+["🇮🇶","Iraq","Middle East","https://mohesr.gov.iq/","Higher education ministry"],
+["🇱🇧","Lebanon","Middle East","https://www.mehe.gov.lb/","Education ministry"],
+["🇹🇳","Tunisia","Africa","http://www.mes.tn/","Higher education ministry"],
+["🇸🇳","Senegal","Africa","https://mesr.gouv.sn/","Higher education ministry"],
+["🇧🇼","Botswana","Africa","https://www.moe.gov.bw/","Education ministry"],
+["🇳🇦","Namibia","Africa","https://moe.gov.na/","Education ministry"],
+["🇫🇯","Fiji","Oceania","https://www.education.gov.fj/","Education ministry"],
+["🇵🇬","Papua New Guinea","Oceania","https://www.education.gov.pg/","Education department"]
+];
+extraCountries.forEach(x=>portals.push({flag:x[0],country:x[1],region:x[2],items:[["Study information",x[4],x[3],"Government education portal; check for admissions and scholarship notices"]]}));
+const allItems=()=>portals.flatMap(p=>p.items.map(i=>({flag:p.flag,country:p.country,region:p.region,category:i[0],title:i[1],url:i[2],desc:i[3]})));
+function render(){
+ const q=document.getElementById('search').value.trim().toLowerCase(), cat=document.getElementById('category').value, region=document.getElementById('region').value;
+ const list=allItems().filter(x=>(cat==='All'||x.category===cat)&&(region==='All'||x.region===region)&&[x.country,x.title,x.desc,x.category].join(' ').toLowerCase().includes(q));
+ document.getElementById('count').textContent=`${list.length} resources shown`;
+ document.getElementById('results').innerHTML=list.map(x=>`<article class="card"><div class="country">${x.flag} ${x.country}</div><span class="kind">${x.category}</span><a class="link" href="${x.url}" target="_blank" rel="noopener noreferrer"><b>${x.title} ↗</b><small>${x.url}</small></a><p>${x.desc}</p><p>Region: ${x.region}</p></article>`).join('')||'<div class="card">No matching resources. Try a different search.</div>';
+}
+document.getElementById('search').addEventListener('input',render);
+document.getElementById('category').addEventListener('change',render);
+document.getElementById('region').addEventListener('change',render);
+document.getElementById('totalCountries').textContent=portals.length;
+document.getElementById('totalLinks').textContent=allItems().length;
+render();
+</script>
+</body>
+</html>
